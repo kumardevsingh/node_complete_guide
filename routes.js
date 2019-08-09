@@ -15,7 +15,7 @@ const requestHandler = (req, res) => {
     if (url === '/message' && method == 'POST') {
         const body = [];
         req.on('data', (chunck) => {
-            body.push(chunck)
+            body.push(chunck);
         });
 
         return req.on('end', (chunck) => {
