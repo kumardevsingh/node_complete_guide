@@ -32,8 +32,10 @@ const requestHandler = (req, res) => {
     res.setHeader('Content-Type', 'text/html');
     res.write('<html>');
     res.write('<head><title>My App</title>')
-    res.write('<body><h1>From server side</h1><body>')
+    res.write('<body><h1>From server side: page not found...</h1><body>')
     res.write('</html>')
+    //res.statusCode = 402;
+    //return res.end();
 
 }
 
