@@ -22,5 +22,8 @@
   "homepage": "https://github.com/kumardevsingh/node_complete_guide#readme",
   "devDependencies": {
     "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
