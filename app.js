@@ -1,25 +1,24 @@
-const http = require('http');
-//const routes = require('./routes');
-
-const express =  require('express');
-
+const path =  require('path');
+const express = require('express');
 const app = express();
 
-//const server = http.createServer(routes);
 
-app.use((req,res,next) =>{
-    console.log('in middleware');
-    res.send(`<h1> From express</h1>`)
-    next();
-})
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+const bodyParser = require('body-parser');
 
-app.use((req,res,next) =>{
-    console.log('in another  middleware');
-   // res.send(`<h1> From express -2</h1>`)
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use('/admin', adminRoutes);
+app.use('/shop', shopRoutes);
+
+/** page not found handled below */
+
+app.use((req, res, next) => {
+    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
     //next();
 })
 
-
-//const server = http.createServer(app);
-//server.listen(3000);
 app.listen(3000);
