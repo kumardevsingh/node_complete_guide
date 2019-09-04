@@ -1,24 +1,24 @@
-const path =  require('path');
+const path = require('path');
+
 const express = require('express');
-const app = express();
-
-
-const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/shop');
 const bodyParser = require('body-parser');
 
+const app = express();
 
+app.set('view engine', 'pug');
+app.set('views', 'views');
 
-app.use(bodyParser.urlencoded({ extended: false }));
+const adminData = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
 
-app.use('/admin', adminRoutes);
-app.use('/shop', shopRoutes);
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
 
-/** page not found handled below */
+app.use('/admin', adminData.routes);
+app.use(shopRoutes);
 
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
-    //next();
-})
+});
 
 app.listen(3000);
