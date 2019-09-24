@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,16 +18,17 @@
                 <li class="main-header__item"><a href="/admin/add-product">Add Product</a></li>
             </ul>
         </nav>
-    </header>
+    </header> --}}
 
     <main>
-        <h1>My Products</h1>
-        <p>List of all the products...</p>
+        {{!-- <h1>My Products</h1>
+        <p>List of all the products...</p> --}}
         {{#if hasProduct}}
         <div class="grid">
+            {{#each prods}}
             <article class="card product-item">
                 <header class="card__header">
-                    <h1 class="product__title">Great Book</h1>
+                    <h1 class="product__title">{{this.title}}</h1>
                 </header>
                 <div class="card__image">
                     <img src="https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png" alt="A Book">
@@ -41,11 +42,12 @@
                     <button class="btn">Add to Cart</button>
                 </div>
             </article>
+            {{/each}}
         </div>
         {{ else }}
-        <h1>No Products found</h1>
+        <h4>No Products found</h4>
         {{/if}}
     </main>
-</body>
+{{!-- </body>
 
-</html>
+</html> --}}
